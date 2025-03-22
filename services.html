@@ -75,8 +75,8 @@
       padding: 15px 20px;
       color: #fff;
       text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
       letter-spacing: 1px;
+      transition: background 0.3s, transform 0.2s;
     }
 
     .dropdown a:hover {
@@ -96,6 +96,31 @@
       font-weight: 400;
       display: block;
       margin-top: 10px;
+    }
+
+    .mini-nav {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      z-index: 1;
+    }
+
+    .mini-nav a {
+      padding: 20px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 2px solid white;
+      border-radius: 15px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .mini-nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px) scale(1.05);
     }
 
     .footer-icon {
@@ -164,6 +189,13 @@
   <div class="main-content">
     Our Services
     <small>Design, Development, and Delight.</small>
+
+    <!-- Mini Nav -->
+    <div class="mini-nav">
+      <a href="games.html">Games</a>
+      <a href="movies.html">Movies</a>
+      <a href="tv.html">TV Shows</a>
+    </div>
   </div>
 
   <!-- Footer Icon -->
@@ -183,7 +215,8 @@
         window.location.href = "index.html";
       }
 
-      document.querySelectorAll('.dropdown a, .footer-bar a').forEach(link => {
+      // Add page transitions
+      document.querySelectorAll('.dropdown a, .footer-bar a, .mini-nav a').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           const target = this.getAttribute('href');
@@ -194,6 +227,9 @@
           }, 500);
         });
       });
+
+      // Save current page as entry point for subpages
+      localStorage.setItem("cameFromServices", "true");
     });
 
     (function () {

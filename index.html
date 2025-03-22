@@ -1,4 +1,3 @@
-<!-- FULL CLEAN INDEX WITH PAGE TRANSITION -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,17 +147,24 @@
       padding: 25px 0;
       gap: 40px;
       z-index: 1;
+      flex-wrap: wrap;
     }
 
-    .footer-bar a {
+    .footer-bar a,
+    .footer-bar button {
       color: #fff;
       text-decoration: none;
+      background: none;
+      border: none;
+      font-family: inherit;
       letter-spacing: 1px;
       font-size: 16px;
       transition: color 0.3s, transform 0.2s;
+      cursor: pointer;
     }
 
-    .footer-bar a:hover {
+    .footer-bar a:hover,
+    .footer-bar button:hover {
       color: #ffe;
       transform: scale(1.05);
     }
@@ -238,6 +244,7 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
+    <button onclick="clearPassword()">Remove Login</button>
   </div>
 
   <script>
@@ -285,6 +292,12 @@
       } else {
         alert("Incorrect password. Try again.");
       }
+    }
+
+    function clearPassword() {
+      localStorage.removeItem("authenticated");
+      localStorage.removeItem("cameFromServices");
+      location.reload();
     }
 
     (function () {

@@ -190,7 +190,7 @@
     Our Services
     <small>Design, Development, and Delight.</small>
 
-    <!-- Mini Nav -->
+    <!-- Aesthetic Mini Nav -->
     <div class="mini-nav">
       <a href="games.html">Games</a>
       <a href="movies.html">Movies</a>
@@ -215,7 +215,7 @@
         window.location.href = "index.html";
       }
 
-      // Add page transitions
+      // Transition links
       document.querySelectorAll('.dropdown a, .footer-bar a, .mini-nav a').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -228,7 +228,7 @@
         });
       });
 
-      // Save current page as entry point for subpages
+      // Allow subpage access from services
       localStorage.setItem("cameFromServices", "true");
     });
 

@@ -167,7 +167,6 @@
       background: #0056b3;
     }
 
-    /* Custom Cursor */
     .custom-cursor {
       position: fixed;
       top: 0;
@@ -202,6 +201,9 @@
     <div class="game-card" onclick="openGame('Polytrack', 'https://nyancat999.github.io/gayboy123/')">
       <h3>Polytrack</h3>
     </div>
+    <div class="game-card" onclick="openGame('Snow Rider 3D', 'https://gameforgeweb.github.io/snowrider3D/')">
+      <h3>Snow Rider 3D</h3>
+    </div>
   </div>
 
   <div class="game-modal" id="gameModal">
@@ -224,7 +226,6 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- Custom Cursor -->
   <div class="custom-cursor" id="customCursor"></div>
 
   <script>
@@ -270,7 +271,7 @@
         });
       });
 
-      // Custom Cursor
+      // Custom Cursor Setup
       const cursor = document.getElementById("customCursor");
       document.addEventListener("mousemove", (e) => {
         cursor.style.top = `${e.clientY}px`;

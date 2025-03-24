@@ -166,6 +166,27 @@
     .close-btn:hover, .fullscreen-btn:hover {
       background: #0056b3;
     }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-hover {
+      width: 50px !important;
+      height: 50px !important;
+    }
   </style>
 </head>
 <body>
@@ -177,6 +198,9 @@
   <div class="games-grid">
     <div class="game-card" onclick="openGame('Rocket Soccer Derby', 'https://narrow-one.github.io/n6/rocket-soccer-derby')">
       <h3>Rocket Soccer Derby</h3>
+    </div>
+    <div class="game-card" onclick="openGame('Polytrack', 'https://nyancat999.github.io/gayboy123/')">
+      <h3>Polytrack</h3>
     </div>
   </div>
 
@@ -200,6 +224,9 @@
     <a href="contact.html">Contact</a>
   </div>
 
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+
   <script>
     function openGame(title, url) {
       document.getElementById("gameTitle").innerText = title;
@@ -213,7 +240,7 @@
     }
 
     function toggleFullscreen() {
-      var iframe = document.getElementById("gameFrame");
+      const iframe = document.getElementById("gameFrame");
       if (!document.fullscreenElement) {
         iframe.requestFullscreen().catch(err => {
           alert(`Error attempting fullscreen: ${err.message}`);
@@ -241,6 +268,17 @@
             window.location.href = target;
           }, 500);
         });
+      });
+
+      // Custom Cursor
+      const cursor = document.getElementById("customCursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.top = `${e.clientY}px`;
+        cursor.style.left = `${e.clientX}px`;
+      });
+      document.querySelectorAll("a, button, .game-card").forEach(el => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
       });
     });
 

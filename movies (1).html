@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services</title>
+  <title>Movies</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <style>
     html, body {
       margin: 0;
@@ -20,7 +19,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
       animation: fadeIn 0.5s ease-in-out;
     }
 
@@ -29,98 +27,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .navbar {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 20px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      z-index: 2;
-    }
-
-    .hamburger {
-      cursor: pointer;
-      font-size: 32px;
-      transition: transform 0.3s ease;
-    }
-
-    .hamburger:hover {
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: rgba(30, 30, 30, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 8px;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-      display: flex;
-      flex-direction: column;
-      min-width: 150px;
-    }
-
-    .navbar:hover .dropdown {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .dropdown a {
-      padding: 15px 20px;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: 1px;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .dropdown a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(5px);
-    }
-
     .main-content {
       font-size: 60px;
       text-align: center;
       padding: 20px;
-      z-index: 1;
     }
 
     .main-content small {
       font-size: 20px;
-      font-weight: 400;
       display: block;
       margin-top: 10px;
-    }
-
-    .mini-nav {
-      display: flex;
-      gap: 40px;
-      margin-top: 40px;
-      z-index: 1;
-    }
-
-    .mini-nav a {
-      padding: 20px 30px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border: 2px solid white;
-      border-radius: 15px;
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      letter-spacing: 1px;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    .mini-nav a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-5px) scale(1.05);
     }
 
     .footer-icon {
@@ -134,15 +50,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
       font-size: 24px;
+      font-weight: bold;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      color: white;
       z-index: 2;
-    }
-
-    .footer-icon:hover {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
     }
 
     .footer-bar {
@@ -161,8 +72,8 @@
     .footer-bar a {
       color: #fff;
       text-decoration: none;
-      letter-spacing: 1px;
       font-size: 16px;
+      letter-spacing: 1px;
       transition: color 0.3s, transform 0.2s;
     }
 
@@ -196,35 +107,13 @@
 </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <div class="navbar">
-    <span class="material-icons hamburger">menu</span>
-    <div class="dropdown">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-
-  <!-- Page Content -->
   <div class="main-content">
-    Our Services
-    <small>Design, Development, and Delight.</small>
-
-    <!-- Mini Nav -->
-    <div class="mini-nav">
-      <a href="games.html">Games</a>
-      <a href="movies.html">Movies</a>
-      <a href="tv.html">TV Shows</a>
-    </div>
+    Movies
+    <small>Popcorn, pixels, and powerful stories.</small>
   </div>
 
-  <!-- Footer Icon -->
   <div class="footer-icon">N</div>
 
-  <!-- Footer Bar -->
   <div class="footer-bar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -234,12 +123,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("authenticated") !== "true") {
+      const authenticated = localStorage.getItem("authenticated") === "true";
+      const cameFromServices = localStorage.getItem("cameFromServices") === "true";
+
+      if (!authenticated || !cameFromServices) {
         window.location.href = "index.html";
       }
 
-      // Add page transitions
-      document.querySelectorAll('.dropdown a, .footer-bar a, .mini-nav a').forEach(link => {
+      document.querySelectorAll('.footer-bar a').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           const target = this.getAttribute('href');
@@ -250,9 +141,6 @@
           }, 500);
         });
       });
-
-      // Save current page as entry point for subpages
-      localStorage.setItem("cameFromServices", "true");
     });
 
     (function () {

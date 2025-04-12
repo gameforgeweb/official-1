@@ -76,8 +76,8 @@
     .footer-bar a {
       color: #fff;
       text-decoration: none;
-      letter-spacing: 1px;
       font-size: 16px;
+      letter-spacing: 1px;
       transition: color 0.3s, transform 0.2s;
     }
 
@@ -204,6 +204,12 @@
     <div class="game-card" onclick="openGame('Snow Rider 3D', 'https://gameforgeweb.github.io/snowrider3D/')">
       <h3>Snow Rider 3D</h3>
     </div>
+    <div class="game-card" onclick="openGame('Stickman Hook', 'https://gameforgeweb.github.io/Stickman-Hook/')">
+      <h3>Stickman Hook</h3>
+    </div>
+    <div class="game-card" onclick="openGame('Huo', 'https://nyancat999.github.io/huo/')">
+      <h3>Huo</h3>
+    </div>
   </div>
 
   <div class="game-modal" id="gameModal">
@@ -271,7 +277,6 @@
         });
       });
 
-      // Custom Cursor Setup
       const cursor = document.getElementById("customCursor");
       document.addEventListener("mousemove", (e) => {
         cursor.style.top = `${e.clientY}px`;
